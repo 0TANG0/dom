@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*样式重置，保证兼容，在开始都要写*/
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style: none;/*去掉列表前的小点*/
+
+
+        }
+        a{
+            text-decoration: none;
+            display: block;/*a是行级，变成块级才能设置宽高*/
+            width: 100%;/*充满*/
+            height: 100%;/*自己的附元素*/
+
+
+        }
+        #ul1 li/*后代选择器，可以跨子代*/{
+            background: #cccccc;
+            width: 120px;
+            height:30px;
+            margin: 5px;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+
+
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li><a href="">11</a></li>
+    <li><a href="">22</a></li>
+    <li><a href="">33</a></li>
+</ul>
+
+
+</body>
+</html>
