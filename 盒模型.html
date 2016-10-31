@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+    <style>
+        a{
+            background: gray;
+            width: 120px;
+            height: 30px;/*a是行级元素，不能设置宽和高*/
+            float:left ;/*浮动，没问题*/
+/*
+            display: inline-block;/!*把行级元素设成块，既水平排列又能设置宽和高，但是inlineblockIE6不支持，默认为inline*!/
+*/
+        }
+        h1 {
+            background: #ff0000;
+            width: 200px;
+            height: 50px;
+
+        }
+        p{
+            background: #00ff00
+            width: 200px;
+            height: 50px;
+        }
+        div{
+            background: #0000ff;
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <a href="">haha</a>
+    <span>hehe</span>
+    <button>hoho</button>
+    <h1>标题</h1><!--标题标签有六个，字体大小从大到小-->
+    <p>这个是段落标签</p>
+    <div>分区标签，没有语意</div>
+</body>
+</html>
