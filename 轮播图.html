@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul, ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #content img{
+            float:left;
+            border: 0;
+        }
+        #content{
+            width: 2720px;
+            height:340px;
+            position: absolute;
+            left: 0;
+        }
+
+        #container {
+            width: 680px;
+            height: 344px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #tab{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+        #tab li{
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #000000;
+            color: #fff;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #tab .selected{
+            background: orange;
+        }
+        #content img{
+
+        }
+        #content .selected{
+            display: block;
+        }
+        #arrow{
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+        }
+        #arrow span{
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="content">
+        <img class="selected" src="img/1.jpg" alt=""/>
+        <img src="img/2.jpg" alt=""/>
+        <img src="img/3.jpg" alt=""/>
+        <img src="img/4.jpg" alt=""/>
+    </div>
+    <div id="arrow">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oTab = document.getElementById('tab');
+    var aLi = oTab.getElementsByTagName('li');
+    var oContent = document.getElementById('content');
+    var aImg = oContent.getElementsByTagName('img');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var aImgwidth = aImg[0].offsetWidth;
+    var iNow = 0;//代表当前正在显示的图片的索引
+    for(var i=0;i<ali.length;i++){
+        ali.index = i;
+            ali[i].onmouseover = function(){
+                for(var j= 0;j<ali.Length;j++){
+                   ali[j].className = "";
+                }
+                this.className = "selected";
+                animate(oContent,{
+                 left: -this.index * aImgwidth
+                });
+        };
+    }
+    oPrev.onclick = oNext.onclick = function()
+
+</script>
+</body>
+</html>

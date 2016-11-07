@@ -36,9 +36,9 @@
             line-height: 30px;
 
         }
-        #menu.sub-menu{
+        #menu .sub-menu{
             width: 120px;
-            display: none;
+            display: none;/*隐藏释放空间。不释放空间用透明度*/
             background: #cccccc;
         }
 
@@ -77,10 +77,10 @@
     var aSubMenu = oMenu.getElementsByTagName('ul');
     var count = 0;
     for(var i=0; i<aMainMenu.length; i++) {
-        if (aMainMenu[i].className == 'main-manu') {
+        if (aMainMenu[i].className == 'main-menu') {
             aMainMenu[i].index = count++;
 
-            aMainMenu[i].onmouseover = function () {
+            aMainMenu[i].onmouseover = function (){
                 aSubMenu[this.index].style.display = 'block';
             };
 
