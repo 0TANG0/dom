@@ -123,7 +123,7 @@
         }
         changeImg(iNow);
     };
-
+    //计时器
     var timer;
     oContainer.onmouseover = function(){
         clearInterval(timer);
@@ -133,7 +133,7 @@
         timer = setInterval(function (){
             oNext.onclick();}, 1000 )
     };
-
+    //
     //封装一个换图片的函数
     function changeImg(idx){
         for(var i= 0;i<aLi.length;i++) {

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            height: 480px;
+            width: 1000px;
+            margin:  auto;
+            position: absolute;
+        }
+
+        #content{
+            width: 400px;
+            height: 400px;
+        }
+        #tiao{
+            width: 600px;
+            height: 20px;
+            background: gray;
+            position: absolute;
+        }
+        #content img{
+            float: left;
+            width: 600px;
+            height: 400px;
+            position: absolute;
+        }
+        ul li img{
+            width: 120px;
+            height: 80px;
+            float: left;
+        }
+        ul li{
+            width: 120px;
+            height: 80px;
+            float: left;
+        }
+        #tiao{
+            width: 600px;
+            height: 20px;
+            background: gray;
+            position: absolute;
+            bottom: 80px;
+            opacity: 0.5;
+            color: white;
+        }
+        #next{
+            width: 30px;
+            height: 30px;
+            background: black;
+            position: absolute;
+            top: 200px;
+            left: 550px;;
+            color: white;
+            display: block;
+        }
+        #prev{
+            width: 30px;
+            height: 30px;
+            background: black;
+            position: absolute;
+            top: 200px;
+            left: 15px;
+            color: white;
+            display: block;
+        }
+        .selected{
+            display: block;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div id="content">
+        <img src="图片轮换播放/imgs/1.jpg" alt="" class="selected"/>
+        <img src="图片轮换播放/imgs/2.jpg" alt=""/><!--图片从本文件同级开始写，如果是上一级用../-->
+        <img src="图片轮换播放/imgs/3.jpg" alt=""/>
+        <img src="图片轮换播放/imgs/4.jpg" alt=""/>
+        <img src="图片轮换播放/imgs/5.jpg" alt=""/>
+        <img src="图片轮换播放/imgs/6.jpg" alt=""/>
+        <img src="图片轮换播放/imgs/7.jpg" alt=""/>
+        <img src="图片轮换播放/imgs/8.jpg" alt=""/>
+    </div>
+    <ul id="arrow">
+        <li class="selected"><img src="图片轮换播放/imgs/1.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/2.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/3.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/4.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/5.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/6.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/7.jpg" alt=""/></li>
+        <li><img src="图片轮换播放/imgs/8.jpg" alt=""/></li>
+    </ul>
+    <div id="tiao">
+        /8
+    </div>
+    <div id="prev" >&lt;</div>
+    <div id="next" >&gt;</div>
+</div>
+    <script src="jslib.js"></script>
+    <script>
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var aLi = document.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var aImg = oContent.getElementsByTagName('img');
+        var oContainer = document.getElementById('container');
+        var zIndex = 8;
+        var iNow =0;
+        for(var i=0;i<aLi.length;i++){
+            aImg[i].style.zIndex = aImg.length - i;
+            aLi[i].index = i;
+            aLi[i].onmouseover() = function(){
+                changeImg(this.index);
+            };
+        }
+        function changeImg(index){
+            iNow = index;
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].className = '';
+            }
+            aLi[iNow].className = 'selected';
+
+            var oImg = aImg[iNow];
+            oImg.style.opacity = 0;
+            oImg.style.filter = "alpha(opacity=0)";
+            oImg.style.zIndex = ++zIndex;
+
+            animate(oImg, {opacity: 100});
+        }
+        oPrev.onclick = oNext.onclick = function(){
+            if(this == oPrev){
+                iNow--;
+                if(iNow == -1){
+                    iNow = aLi.length - 1;
+                }
+                changeImg(iNow);
+            }else{
+                iNow++;
+                if(iNow == aLi.length){
+                    iNow = 0;
+                }
+                changeImg(iNow);
+            }
+        };
+
+    </script>
+</body>
+</html>

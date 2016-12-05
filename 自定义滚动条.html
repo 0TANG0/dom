@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #content{
+            width: 180px;
+            height: 200px;
+            background: #cccccc;
+            position: absolute;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            /*overflow: hidden;*/
+        }
+        #scroll-bar{
+            width: 20px;
+            height: 200px;
+            background:palevioletred;
+            position: relative;
+            left: 180px;
+
+        }
+        #scroll-btn{
+            width: 20px;
+            height: 20px;
+            background: skyblue;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+    </div>
+    <div id="scroll-bar">
+        <div id="scroll-btn"></div>
+    </div>
+</div>
+
+
+<script>
+    var oBtn = document.getElementById('scroll-btn');
+    var oBar = document.getElementById('scroll-bar');
+    var oContent = document.getElementById('content');
+    var iDisY = 0;
+    oBtn.onmousedown = function(e) {
+        e = e || window.event;
+        iDisY = e.clientY - oBtn.offsetTop;/* iDisY：鼠标到块的垂直距离*/
+    };
+    document.onmousemove = function(e){
+        e = e || window.event;
+        var itop = e.clientY - iDisY;
+        oBtn.style.top = itop +'px';
+        if(itop < 0){
+            itop=0;
+        }
+        if(itop > oBar.offsetTop - oBtn.offsetTop ){
+            itop = oBar.offsetTop - oBtn.offsetTop;
+        }
+    };
+    oBtn.onmouseup = function(e){
+        e = e || window.event;
+        document.onmousemove = null;
+    };
+</script>
+</body>
+</html>
