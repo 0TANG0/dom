@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container{
+            width: 300px;
+            height: 150px;
+            margin: 50px  auto;
+            position: relative;
+        }
+        img{
+            width: 250px;
+            height: 150px;
+            position: absolute;
+            transform-origin: bottom;
+            -webkit-transform: rotateX(180deg);
+            -moz-transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg);
+            -o-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+            opacity: 0;
+        }
+        #arrows span{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #cccccc;
+            font-size: large;
+            text-align: center;
+            line-height: 30px;
+            position: absolute;
+            top: 75px;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+            -webkit-text-stroke: 1px #000;
+
+
+        }
+        #next{
+            position: absolute;
+            right: -5px;
+        }
+        #prev{
+            position: absolute;
+            left: -50px;
+        }
+        #imgs .show{
+            opacity: 1;
+        }
+        #imgs .hide{
+            opacity: 0;
+        }
+        #imgs .show{
+            animation: show 1s ease forwards;
+        }
+        #imgs .hide{
+            animation: hide .5s ease forwards;
+        }
+        @keyframes show {
+            from{
+                -webkit-transform: rotateX(-180deg);
+                -moz-transform: rotateX(-180deg);
+                -ms-transform: rotateX(-180deg);
+                -o-transform: rotateX(-180deg);
+                transform: rotateX(-180deg);
+
+            }
+            to{
+                opacity:1;
+                -webkit-transform: rotateX(-360deg);
+                -moz-transform: rotateX(-360deg);
+                -ms-transform: rotateX(-360deg);
+                -o-transform: rotateX(-360deg);
+                transform: rotateX(-360deg);
+            }
+        }
+        @keyframes hide {
+            from{
+                opacity:1;
+                transform: rotateX(0deg);
+            }
+            to{
+                opacity: 0;
+                transform: rotateX(-180deg);
+            }
+        }
+        #imgs{
+            perspective: 1000px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="imgs">
+        <img src="轮播图系列/a.jpg" alt="" style="z-index: 4" class="show"/>
+        <img src="轮播图系列/b.jpg" alt="" style="z-index: 3"/>
+        <img src="轮播图系列/c.jpg" alt="" style="z-index: 2"/>
+        <img src="轮播图系列/d.jpg" alt="" style="z-index: 1"/>
+    </div>
+    <div id="arrows">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script>
+    var oImg = document.getElementById("imgs");
+    var oPrev = document.getElementById("prev");
+    var oNext = document.getElementById("next");
+    var aImgs = document.getElementsByTagName("img");
+    var iNow = 0;
+    oPrev.onclick = oNext.onclick = function(){
+        if(this == oNext){
+            aImgs[iNow].className = "hide";
+            iNow++;
+            if(iNow == aImgs.length){
+                iNow = 0;
+            }
+            aImgs[iNow].className = "show";
+        }else{
+            aImgs[iNow].className = "hide";
+            iNow--;
+            if(iNow == -1){
+                iNow = aImgs.length - 1;
+            }
+            aImgs[iNow].className = "show";
+        }
+    };
+
+</script>
+</body>
+</html>

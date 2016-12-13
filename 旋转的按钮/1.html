@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            position: relative;
+            top: 300px;
+            left: 300px;
+
+        }
+        img{
+            position: absolute;
+            top: 300px;
+            left: 300px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="menu">
+        <img src="img/close.png" alt="" class="small"/>
+        <img src="img/full.png" alt="" class="small"/>
+        <img src="img/open.png" alt="" class="small"/>
+        <img src="img/prev.png" alt="" class="small"/>
+        <img src="img/refresh.png" alt="" class="small"/>
+    </div>
+    <div id="home">
+        <img src="img/home.png" alt=""/>
+    </div>
+
+</div>
+<script>
+    var oMenu = document.getElementByID("menu");
+    var aImg = oMenu.getElementsByTagName("img");
+    var oHome = document.getElementByID("home");
+    var bFlag = false;//dakai
+    oHome.onclick = function() {
+        if (bFlag) {
+
+        } else {
+
+        }
+        bFlag = !bFlag;
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
