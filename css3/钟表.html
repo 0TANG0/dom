@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 500px;
+            height: 500px;
+            margin:100px auto;
+            position: relative;
+        }
+        #pan{
+            width: 500px;
+            height: 500px;
+            border: 5px solid darkblue;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        #zhe div{
+            width: 5px;
+            height:20px;
+            background: darkblue;
+            position: absolute;
+            top: 0;
+            left: 250px;
+            transform-origin:0 250px ;
+        }
+        #zhe div:nth-child(5n+1){
+            height:30px
+        }
+        #shi{
+            width: 10px;
+            height: 80px;
+            background: black;
+            position: absolute;
+            left: 250px;
+            top:170px;
+            transform-origin: bottom;
+        }
+        #fen{
+            width: 10px;
+            height: 130px;
+            background: black;
+            position: absolute;
+            left: 250px;
+            top:120px;
+            transform-origin: bottom;
+        }
+        #miao{
+            width: 8px;
+            height: 180px;
+            background: red;
+            position: absolute;
+            left: 250px;
+            top:70px;
+            transform-origin: bottom;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="pan"></div>
+    <div id="zhe">
+    </div>
+    <div id="shi" ></div>
+    <div id="fen" ></div>
+    <div id="miao" ></div>
+</div>
+<script>
+    var oZhe = document.getElementById("zhe");
+    var oShi = document.getElementById("shi");
+    var oFen = document.getElementById("fen");
+    var oMiao = document.getElementById("miao");
+    var html;
+    for(i=0; i<60; i++){
+        html+="<div style='transform:rotate("+ i*6 +"deg)'></div>";
+    }
+    oZhe.innerHTML=html;
+    setInterval(function(){
+        var now =new Date(),
+                miao = now.getSeconds(),
+                fen = now.getMinutes() + miao / 60,
+                shi = now.getHours() + fen / 60;
+        oShi.style.transform ="rotate("+ shi*30 +"deg)";
+        oFen.style.transform ="rotate("+ fen*6 +"deg)";
+        oMiao.style.transform ="rotate("+ miao*6 +"deg)";
+    },1000)
+</script>
+</body>
+</html>
